@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 public class SignUp {
 
-public SignUp() {
-	signUpUser();
-}
+public SignUp() {}
 
-private void signUpUser() {
+public void signUpUser() {
 	UserInterface userInterface = new UserInterface();
 	
 	String name = getUniqueUserName();

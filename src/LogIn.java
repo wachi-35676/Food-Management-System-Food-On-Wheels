@@ -9,10 +9,10 @@ public class LogIn {
     ArrayList<Admin> admins = fileHandling.getAdminList("Admins.csv");
     ArrayList<Order> orders = new ArrayList<>();
 
-	LogIn(){
-        User user = login();
-        int loggedInUserType = getAccountType(user);
-        user.handleUser(loggedInUserType, customers, riders, orders, restaurants, admins);
+	public void starter(){
+		User user = login();
+		int loggedInUserType = getAccountType(user);
+		user.handleUser(loggedInUserType, customers, riders, orders, restaurants, admins);
 	}
 	
 	private User login(){

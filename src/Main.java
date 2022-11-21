@@ -13,6 +13,9 @@ import java.awt.Toolkit;
 
 public class Main extends JFrame {
 
+	LogIn logIn = new LogIn();
+	SignUp signUp = new SignUp();
+
 	private JPanel contentPane;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,7 +45,7 @@ public class Main extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new LogIn();
+				logIn.starter();
 			}
 		});
 		btnNewButton.setBounds(162, 124, 85, 36);
@@ -51,8 +54,8 @@ public class Main extends JFrame {
 		JButton btnNewButton_1 = new JButton("Sign Up");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SignUp();
-				
+				signUp.signUpUser();
+				logIn = new LogIn();
 			}
 		});
 		btnNewButton_1.setBackground(new Color(100, 149, 237));
