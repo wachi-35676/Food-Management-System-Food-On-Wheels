@@ -6,7 +6,7 @@ public class SignUp {
 
 public SignUp() {}
 
-public void signUpUser() {
+public int signUpUser() {
 	UserInterface userInterface = new UserInterface();
 	
 	String name = getUniqueUserName();
@@ -26,6 +26,7 @@ public void signUpUser() {
 			SignupRider(name,passWord);
 		}
 	}
+	return accountType;
 }
 
 private String getUniqueUserName() {
@@ -60,7 +61,7 @@ private String getUniqueUserName() {
 	return userName;
 }
 
-private void SignupRider(String name, String passWord2) {
+private Rider SignupRider(String name, String passWord2) {
 	
 	FileHandling fh = new FileHandling();
 	String approve = "No";
@@ -68,10 +69,12 @@ private void SignupRider(String name, String passWord2) {
 	ArrayList <Rider> r = new ArrayList<>();
 	r = fh.getRiderList("Riders.csv");
 	r.add(rider);
-	fh.setRiderList("Riders.csv", r);	
+	fh.setRiderList("Riders.csv", r);
+
+	return rider;
 }
 
-private void SignupResturant(String name, String passWord2) {
+private Restaurant SignupResturant(String name, String passWord2) {
 	String File = name+".csv";
 	UserInterface userIterface = new UserInterface();
 	File restfile = new File(File);
@@ -87,7 +90,8 @@ private void SignupResturant(String name, String passWord2) {
 	r = fh.getRestaurantList("Restaurants.csv");
 	r.add(rest);
 	fh.setRestaurantList("Restaurants.csv", r);
-	
+
+	return rest;
 }
 
 private int getAccountType() {
@@ -101,7 +105,7 @@ private int getAccountType() {
 	}
 return input;
 }
-private void SignupCustomer(String name,String passWord) {
+private Customer SignupCustomer(String name,String passWord) {
 	UserInterface userIterface = new UserInterface();
 	Customer customer =  new Customer(name,passWord,userIterface.getInput("Enter address"));
 	FileHandling fh = new FileHandling();
@@ -110,7 +114,7 @@ private void SignupCustomer(String name,String passWord) {
 	c.add(customer);
 	fh.setCustomerList("Customers.csv", c);
 	
-	
+	return customer;
 }
 	
 }
