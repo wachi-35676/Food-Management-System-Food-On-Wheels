@@ -56,12 +56,13 @@ public class Restaurant extends User{
                 }
                 case 5:{
                     updateOrderStatus(orders);
-                    }
+                    break;
                 }
-            }while (options != 0);
-        }
+            }
+        }while (options != 0);
+    }
 
-    private void updateOrderStatus(ArrayList<Order>orders){
+    private Order updateOrderStatus(ArrayList<Order>orders){
         UserInterface userInterface = new UserInterface();
         String str = "";
 
@@ -77,14 +78,22 @@ public class Restaurant extends User{
         if(choice != -1) {
             orders.get(choice).setOrderStatus("Ready. Waiting for rider to pick up.");
         }
+
+        return orders.get(choice);
     }
     
     private void addFood() {
         FileHandling fileHandling = new FileHandling();
         UserInterface userInterface = new UserInterface();
     	if (getFullMenu().size()<=15) {
-            String foodName = userInterface.getInput("Enter Name of Food: ");
-            Integer foodPrice = userInterface.getIntInput("Enter Price of Food: ");
+            String foodName = userInterface.getInput("Enter Name of Food (0 to exit) : ");
+            if (foodName.equals("0")) {
+                return;
+            }
+            Integer foodPrice = userInterface.getIntInput("Enter Price of Food (0 to exit) : ");
+            if (foodPrice == 0) {
+                return;
+            }
 
             getFullMenu().add(new Food(foodName, foodPrice));
 
@@ -115,7 +124,7 @@ public class Restaurant extends User{
         return fileName;
     }
     
-    public void editRestaurant(){
+    public ArrayList<Food> editRestaurant(){
         UserInterface userInterface = new UserInterface();
         FileHandling fileHandling = new FileHandling();
 
@@ -127,9 +136,11 @@ public class Restaurant extends User{
         getFullMenu().set(foodToEdit,new Food(foodName, foodPrice));
 
         fileHandling.updateFoodList(getFileName(), getFullMenu());
+
+        return menu;
     }
     
-    public void removeItem(){
+    public ArrayList<Food> removeItem(){
         UserInterface userInterface = new UserInterface();
         FileHandling fileHandling = new FileHandling();
 
@@ -138,5 +149,6 @@ public class Restaurant extends User{
 
         fileHandling.updateFoodList(getFileName(), getFullMenu());
 
+        return menu;
     }
 }

@@ -6,8 +6,6 @@ public class Order {
     private String restaurantUserName;
     private String riderUserName;
 
-    Order(){}
-
     Order (String orderStatus, Food food, String customerUserName, String restaurantUserName){
         this.orderStatus = orderStatus;
         this.food = food;

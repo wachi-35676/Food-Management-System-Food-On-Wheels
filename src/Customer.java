@@ -139,7 +139,7 @@ public class Customer extends User{
         return address;
     }
 
-    private void placeOrder(ArrayList<Order> orders){
+    private ArrayList<Order> placeOrder(ArrayList<Order> orders){
         bill = 0;
 
         ordered = true;
@@ -150,9 +150,11 @@ public class Customer extends User{
 
             bill += cart.get(i).getFood().getFoodPrice();
         }
+
+        return orders;
     }
 
-    private void deleteOrder(ArrayList<Order> orders){
+    private ArrayList<Order> deleteOrder(ArrayList<Order> orders){
         UserInterface userInterface = new UserInterface();
         String str = "";
 
@@ -182,6 +184,7 @@ public class Customer extends User{
             ordered = false;
         }
 
+        return orders;
     }
 
     public boolean isOrdered() {

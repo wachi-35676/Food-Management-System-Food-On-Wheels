@@ -2,10 +2,6 @@ import java.util.ArrayList;
 
 public class Admin extends User{
 
-    Admin(){
-
-    }
-
     Admin(String userName, String password){
         super(userName, password);
     }

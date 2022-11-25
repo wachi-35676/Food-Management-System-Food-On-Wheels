@@ -65,7 +65,7 @@ public class Rider extends User{
         }
     }
     
-    private void updateStatus(ArrayList <Order> orders){
+    private Order updateStatus(ArrayList <Order> orders){
         UserInterface userInterface = new UserInterface();
         int orderIndex = -1;
         for (int i = 0; i < orders.size(); i++) {
@@ -135,9 +135,10 @@ public class Rider extends User{
         else {
             userInterface.givePrompt("Failed");
         }
+        return orders.get(orderIndex);
     }
 
-    private void confirmOrder(ArrayList <Order> orders, ArrayList <Restaurant> restaurants,ArrayList<Customer> customers){
+    private Order confirmOrder(ArrayList <Order> orders, ArrayList <Restaurant> restaurants,ArrayList<Customer> customers){
         UserInterface userInterface = new UserInterface();
 
         int customerIndex = -1;
@@ -186,5 +187,6 @@ public class Rider extends User{
         if (customerIndex == -1){
             userInterface.givePrompt("You have no Delivery Requests right now");
         }
+        return orders.get(customerIndex);
     }
 }
